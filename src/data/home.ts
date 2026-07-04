@@ -1,0 +1,85 @@
+import type { Package, Testimonial, Feature, Stat } from '@/types';
+
+export const stats: Stat[] = [
+  { label: 'Years of service', value: '6+' },
+  { label: 'Pilgrims served', value: '4k+' },
+  { label: 'Travel Partners', value: '10+' },
+];
+
+export const features: Feature[] = [
+  { id: '1', number: '01', title: 'Visa assistance', description: 'We process your Umrah visa end to end, no agents to chase.' },
+  { id: '2', number: '02', title: '24x7 Guidance', description: 'Get 24/7 support for bookings, updates, and assistance anytime.' },
+  { id: '3', number: '03', title: 'Advanced booking', description: 'Book early and enjoy the best deals with guaranteed availability.' },
+  { id: '4', number: '04', title: 'Stay near Haram', description: 'Hotels close to the mosques, with transport arranged door to door.' },
+  { id: '5', number: '05', title: 'Transport Booking', description: 'Reliable and comfortable transport services for a smooth journey.' },
+  { id: '6', number: '06', title: 'Customized trips', description: 'Itineraries shaped to your dates, budget, and pace.' },
+];
+
+export const packages: Omit<Package, 'description' | 'highlights' | 'itinerary' | 'inclusions' | 'exclusions' | 'galleryImages' | 'reviews' | 'location'>[] = [
+  {
+    id: 'e1',
+    title: 'Aima Tours Muharram Umrah Package',
+    type: 'Economy',
+    category: 'Umrah',
+    price: 99999,
+    duration: '14 Nights',
+    date: '06 July 2026',
+    departureCity: 'Delhi',
+    rating: 4.8,
+    image: '/images/card-1.png',
+    limitedSeats: true,
+  },
+  {
+    id: 'e2',
+    title: 'Mumbai Umrah Semi Deluxe',
+    type: 'Economy',
+    category: 'Umrah',
+    price: 79999,
+    duration: '14 Nights',
+    date: '06 July 2026',
+    departureCity: 'Mumbai',
+    rating: 4.8,
+    image: '/images/card-2.png',
+    limitedSeats: true,
+  },
+  {
+    id: 'l1',
+    title: 'Aima Tours Muharram Umrah Package',
+    type: 'Luxury',
+    category: 'Umrah',
+    price: 1200000,
+    duration: '14 Nights',
+    date: '06 July 2026',
+    departureCity: 'Delhi',
+    rating: 4.2,
+    image: '/images/card-1.png',
+    limitedSeats: true,
+  },
+];
+
+export const testimonials: Testimonial[] = [
+  {
+    id: '1',
+    name: 'Fatima Shaikh',
+    location: 'Mumbai, India',
+    quote: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+    rating: 5,
+    avatar: '/images/review.png',
+  },
+  {
+    id: '2',
+    name: 'Umar. R',
+    location: 'Rajasthan, India',
+    quote: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+    rating: 5,
+    avatar: '/images/review.png',
+  },
+  {
+    id: '3',
+    name: 'Ali K.',
+    location: 'Delhi, India',
+    quote: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+    rating: 5,
+    avatar: '/images/review.png',
+  },
+];

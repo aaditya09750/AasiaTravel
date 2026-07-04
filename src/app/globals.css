@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #362017;
+  --color-primary-light: #84593D;
+  --color-primary-muted: #9C7B5E;
+  --color-primary-soft: #E8DDD0;
+  --color-primary-accent: #6B3F1F;
+
+  --color-accent: #FFC452;
+  --color-accent-gold: #C5855C;
+
+  --color-background-cream: #F2EEEB;
+  --color-background-warm: #FAF7F2;
+  --color-background-dark: #1A1008;
+
+  --color-secondary: #2E385B;
+  --color-neutral-gray: #C4C4C4;
+
+  --font-sans: var(--font-inter), sans-serif;
+  --font-serif: var(--font-playfair), serif;
+  --font-poppins: var(--font-poppins), sans-serif;
+
+  --tracking-widest: 0.18em;
+  --tracking-wider: 0.15em;
+  --tracking-wide: 0.08em;
+
+  --shadow-custom: 0px 4px 4px 0px rgba(179, 179, 179, 0.25);
+
+  --radius-px: 1px;
+  --radius-2px: 2px;
+  --radius-4px: 4px;
+  --radius-20px: 20px;
+  --radius-29px: 29px;
+}
+
+body {
+  @apply font-sans text-primary bg-white overflow-x-hidden antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-serif;
+}
+
+/* Custom Component Utilities */
+.btn-primary {
+  @apply bg-primary text-white px-6 py-3 rounded-sm font-medium transition-all active:scale-95;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-outline {
+  @apply border border-primary text-primary px-6 py-3 rounded-sm font-medium transition-all;
+}
+.btn-outline:hover {
+  @apply bg-primary text-white;
+}
+
+.section-padding {
+  @apply py-16 md:py-24;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.btn-base {
+  @apply inline-flex items-center justify-center rounded-[4px] font-sans text-sm tracking-widest uppercase transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.timeline-line {
+  @apply absolute left-[25px] md:left-[217px] top-0 bottom-0 w-[1px] border-l border-dashed border-primary-muted/40;
+}
+
+/* Lenis Smooth Scroll Configuration */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+

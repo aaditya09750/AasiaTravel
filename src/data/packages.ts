@@ -1,0 +1,209 @@
+import type { FlightInfo, HotelInfo } from '@/types';
+
+export interface StepData {
+  id: string;
+  title: string;
+  description: string;
+  iconName: 'ClipboardCheck' | 'Plane' | 'Building' | 'Utensils' | 'Droplets' | 'PhoneCall';
+}
+
+export interface PackageDetailData {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  duration: string;
+  dates: string;
+  departureCity: string;
+  seatsLeft: number;
+  basePrice: number;
+  sharingPrices: Record<string, number>;
+  addonPrices: Record<string, number>;
+  steps: StepData[];
+  departureFlight: FlightInfo;
+  returnFlight: FlightInfo;
+  hotels: HotelInfo[];
+}
+
+export const packageDetails: Record<string, PackageDetailData> = {
+  e1: {
+    id: 'e1',
+    title: 'AASIA Tours Asaan Muharram Umrah Package',
+    subtitle: 'Policies & Pilgrim Safety',
+    description:
+      'From guided budget Umrah to fully private Hajj, every package includes visa handling, flights, and Haram-front accommodation as standard.',
+    duration: '14 nights',
+    dates: '12 – 26 Oct 2026',
+    departureCity: 'Delhi',
+    seatsLeft: 6,
+    basePrice: 99999,
+    sharingPrices: { Quad: 0, Triple: 15000, Double: 25000 },
+    addonPrices: { 'Ziyarat City Tour': 5000, 'Airport Fast-Track': 3000 },
+    steps: [
+      { id: '01', title: 'Visa Processing', description: 'Umrah visa handled end-to-end, documents collected and submitted for you.', iconName: 'ClipboardCheck' },
+      { id: '02', title: 'Return Flight Tickets', description: 'Confirmed round-trip flights between your city and Jeddah/Medina.', iconName: 'Plane' },
+      { id: '03', title: 'Hotel Booking', description: 'Pre-booked stays in Makkah and Medina, walking distance from both Haramain.', iconName: 'Building' },
+      { id: '04', title: 'Daily Buffets', description: 'Fresh and delicious Breakfast, Lunch, and Dinner served daily.', iconName: 'Utensils' },
+      { id: '05', title: 'ZamZam', description: 'Enjoy 5 liters of blessed Zamzam water on your return journey.', iconName: 'Droplets' },
+      { id: '06', title: '24/7 Guest Assistance', description: 'A support line you can call any time during your trip for help or questions.', iconName: 'PhoneCall' },
+    ],
+    departureFlight: {
+      type: 'Departure',
+      code: 'DEL',
+      city: 'Delhi',
+      destCode: 'JED',
+      destCity: 'Jeddah',
+      plane: 'Boeing 777-300ER',
+      date: '12 Oct 2026',
+      time: '03:40 AM',
+    },
+    returnFlight: {
+      type: 'Return',
+      code: 'MED',
+      city: 'Medina',
+      destCode: 'DEL',
+      destCity: 'Delhi',
+      plane: 'Boeing 777-300ER',
+      date: '26 Oct 2026',
+      time: '11:15 PM',
+    },
+    hotels: [
+      {
+        type: 'Makkah Stay',
+        name: 'Asala Al Bakiyah Hotel',
+        rating: 3,
+        distance: '350m from Haram',
+        features: ['Breakfast & dinner included', 'Quad-sharing rooms', 'Free shuttle to Haram'],
+        image: '/images/card-1.png',
+      },
+      {
+        type: 'Madina Stay',
+        name: 'Rehab Al Madain Hotel',
+        rating: 3,
+        distance: '400m from Masjid an-Nabawi',
+        features: ['Breakfast & dinner included', 'Quad-sharing rooms', 'Near bus services'],
+        image: '/images/card-2.png',
+      },
+    ],
+  },
+  e2: {
+    id: 'e2',
+    title: 'Mumbai Umrah Semi Deluxe Package',
+    subtitle: 'Policies & Pilgrim Safety',
+    description:
+      'A comfortable semi-deluxe Umrah experience from Mumbai with premium hotel stays and guided ziyarat tours.',
+    duration: '14 nights',
+    dates: '12 – 26 Oct 2026',
+    departureCity: 'Mumbai',
+    seatsLeft: 4,
+    basePrice: 79999,
+    sharingPrices: { Quad: 0, Triple: 12000, Double: 20000 },
+    addonPrices: { 'Ziyarat City Tour': 5000, 'Airport Fast-Track': 3000 },
+    steps: [
+      { id: '01', title: 'Visa Processing', description: 'Umrah visa handled end-to-end, documents collected and submitted for you.', iconName: 'ClipboardCheck' },
+      { id: '02', title: 'Return Flight Tickets', description: 'Confirmed round-trip flights between your city and Jeddah/Medina.', iconName: 'Plane' },
+      { id: '03', title: 'Hotel Booking', description: 'Pre-booked stays in Makkah and Medina, walking distance from both Haramain.', iconName: 'Building' },
+      { id: '04', title: 'Daily Buffets', description: 'Fresh and delicious Breakfast, Lunch, and Dinner served daily.', iconName: 'Utensils' },
+      { id: '05', title: 'ZamZam', description: 'Enjoy 5 liters of blessed Zamzam water on your return journey.', iconName: 'Droplets' },
+      { id: '06', title: '24/7 Guest Assistance', description: 'A support line you can call any time during your trip for help or questions.', iconName: 'PhoneCall' },
+    ],
+    departureFlight: {
+      type: 'Departure',
+      code: 'BOM',
+      city: 'Mumbai',
+      destCode: 'JED',
+      destCity: 'Jeddah',
+      plane: 'Boeing 777-300ER',
+      date: '12 Oct 2026',
+      time: '05:20 AM',
+    },
+    returnFlight: {
+      type: 'Return',
+      code: 'MED',
+      city: 'Medina',
+      destCode: 'BOM',
+      destCity: 'Mumbai',
+      plane: 'Boeing 777-300ER',
+      date: '26 Oct 2026',
+      time: '10:45 PM',
+    },
+    hotels: [
+      {
+        type: 'Makkah Stay',
+        name: 'Asala Al Bakiyah Hotel',
+        rating: 3,
+        distance: '350m from Haram',
+        features: ['Breakfast & dinner included', 'Quad-sharing rooms', 'Free shuttle to Haram'],
+        image: '/images/card-1.png',
+      },
+      {
+        type: 'Madina Stay',
+        name: 'Rehab Al Madain Hotel',
+        rating: 3,
+        distance: '400m from Masjid an-Nabawi',
+        features: ['Breakfast & dinner included', 'Quad-sharing rooms', 'Near bus services'],
+        image: '/images/card-2.png',
+      },
+    ],
+  },
+  l1: {
+    id: 'l1',
+    title: 'AASIA Tours Luxury Muharram Umrah Package',
+    subtitle: 'Policies & Pilgrim Safety',
+    description:
+      'A premium luxury Umrah experience with 5-star accommodations, private transfers, and dedicated concierge service.',
+    duration: '14 nights',
+    dates: '12 – 26 Oct 2026',
+    departureCity: 'Delhi',
+    seatsLeft: 3,
+    basePrice: 1200000,
+    sharingPrices: { Quad: 0, Triple: 50000, Double: 100000 },
+    addonPrices: { 'Ziyarat City Tour': 8000, 'Airport Fast-Track': 5000 },
+    steps: [
+      { id: '01', title: 'Visa Processing', description: 'Umrah visa handled end-to-end, documents collected and submitted for you.', iconName: 'ClipboardCheck' },
+      { id: '02', title: 'Return Flight Tickets', description: 'Confirmed round-trip flights between your city and Jeddah/Medina.', iconName: 'Plane' },
+      { id: '03', title: 'Hotel Booking', description: 'Pre-booked stays in Makkah and Medina, walking distance from both Haramain.', iconName: 'Building' },
+      { id: '04', title: 'Daily Buffets', description: 'Fresh and delicious Breakfast, Lunch, and Dinner served daily.', iconName: 'Utensils' },
+      { id: '05', title: 'ZamZam', description: 'Enjoy 5 liters of blessed Zamzam water on your return journey.', iconName: 'Droplets' },
+      { id: '06', title: '24/7 Guest Assistance', description: 'A support line you can call any time during your trip for help or questions.', iconName: 'PhoneCall' },
+    ],
+    departureFlight: {
+      type: 'Departure',
+      code: 'DEL',
+      city: 'Delhi',
+      destCode: 'JED',
+      destCity: 'Jeddah',
+      plane: 'Boeing 777-300ER',
+      date: '12 Oct 2026',
+      time: '03:40 AM',
+    },
+    returnFlight: {
+      type: 'Return',
+      code: 'MED',
+      city: 'Medina',
+      destCode: 'DEL',
+      destCity: 'Delhi',
+      plane: 'Boeing 777-300ER',
+      date: '26 Oct 2026',
+      time: '11:15 PM',
+    },
+    hotels: [
+      {
+        type: 'Makkah Stay',
+        name: 'Asala Al Bakiyah Hotel',
+        rating: 3,
+        distance: '350m from Haram',
+        features: ['Breakfast & dinner included', 'Quad-sharing rooms', 'Free shuttle to Haram'],
+        image: '/images/card-1.png',
+      },
+      {
+        type: 'Madina Stay',
+        name: 'Rehab Al Madain Hotel',
+        rating: 3,
+        distance: '400m from Masjid an-Nabawi',
+        features: ['Breakfast & dinner included', 'Quad-sharing rooms', 'Near bus services'],
+        image: '/images/card-2.png',
+      },
+    ],
+  },
+};
