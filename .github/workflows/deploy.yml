@@ -16,7 +16,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 9
+          version: 11
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -55,4 +55,5 @@ jobs:
             pnpm build
 
             # Reload PM2 process manager daemon
-            pm2 reload aasia-travel || pm2 start npm --name "aasia-travel" -- start
+            PORT=3003 pm2 reload aasia-travel || PORT=3003 pm2 start pnpm --name "aasia-travel" -- start
+
