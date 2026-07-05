@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { navLinks } from '@/config/site';
 import { Button } from '@/components/ui';
 import { motion, AnimatePresence } from 'framer-motion';
+import Lenis from 'lenis';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -12,17 +13,77 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
-  // Prevent background scroll when menu is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+    if (!isOpen) return;
+
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+    const originalBodyOverflow = document.body.style.overflow;
+
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.documentElement.classList.add('lenis-stopped');
+    
+    // 2. Pause Lenis smooth scrolling if active
+    const lenisInstance = typeof window !== 'undefined' ? ((window as any).lenis as Lenis | undefined) : undefined;
+    if (lenisInstance) {
+      lenisInstance.stop();
     }
+
+    const preventScroll = (e: Event) => {
+      e.preventDefault();
+    };
+
+    document.addEventListener('touchmove', preventScroll, { passive: false });
+    document.addEventListener('wheel', preventScroll, { passive: false });
+
     return () => {
-      document.body.style.overflow = '';
+      document.documentElement.style.overflow = originalHtmlOverflow;
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.classList.remove('lenis-stopped');
+
+      const lenisInstanceCleanup = typeof window !== 'undefined' ? ((window as any).lenis as Lenis | undefined) : undefined;
+      if (lenisInstanceCleanup) {
+        lenisInstanceCleanup.start();
+      }
+      document.removeEventListener('touchmove', preventScroll);
+      document.removeEventListener('wheel', preventScroll);
     };
   }, [isOpen]);
+
+  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    onClose();
+    if (href === '/') {
+      if (typeof window !== 'undefined' && window.location.pathname === '/') {
+        e.preventDefault();
+        const lenis = (window as any).lenis;
+        if (lenis && typeof lenis.scrollTo === 'function') {
+          setTimeout(() => {
+            lenis.scrollTo(0, { offset: 0 });
+          }, 50);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+      return;
+    }
+
+    if (href.startsWith('/#') || href.startsWith('#')) {
+      const id = href.replace('/#', '').replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        e.preventDefault();
+        const lenis = typeof window !== 'undefined' ? (window as any).lenis : undefined;
+        if (lenis && typeof lenis.scrollTo === 'function') {
+          // A tiny timeout allows the scroll unlock cleanup in useEffect to complete first
+          setTimeout(() => {
+            lenis.scrollTo(element, { offset: -70 });
+          }, 50);
+        } else {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -44,7 +105,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute top-0 left-0 w-full bg-white border-b border-primary-soft/30 shadow-2xl px-6 pt-[64px] pb-6 flex flex-col gap-5 z-20 overflow-hidden"
+            className="absolute top-0 left-0 w-full bg-white border-b border-primary-soft/30 shadow-2xl px-6 pt-[76px] pb-6 flex flex-col gap-5 z-20 overflow-hidden"
           >
             {/* Links */}
             <div className="flex flex-col">
@@ -52,8 +113,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 <Link
                   key={link.label}
                   href={link.href}
-                  onClick={onClose}
-                  className="py-4 text-[#B0895B] text-xs font-semibold tracking-[0.2em] border-b border-primary-soft/15 hover:text-accent-gold transition-colors block uppercase"
+                  onClick={(e) => handleScrollToSection(e, link.href)}
+                  className="py-4 text-[#B0895B] text-sm font-normal border-b border-primary-soft hover:text-accent-gold transition-colors block uppercase"
                 >
                   {link.label}
                 </Link>
@@ -62,12 +123,12 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
             {/* Footer info & CTA */}
             <div className="pt-2 flex flex-col gap-3 items-start">
-              <span className="text-xs text-[#8B5E3C] font-serif font-bold">
+              <span className="text-sm text-secondary">
                 Need help?
               </span>
               <Button
                 variant="primary"
-                className="bg-secondary hover:bg-secondary/90 text-white text-xs font-semibold tracking-widest px-8 py-3.5 rounded-[4px] transition-colors"
+                className="bg-secondary hover:bg-secondary/90 text-white text-xs tracking-widest px-8 py-3.5 rounded-[4px] transition-colors"
                 onClick={onClose}
               >
                 GET IN TOUCH

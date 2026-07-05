@@ -11,7 +11,6 @@ export default function SmoothScrollProvider({
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -21,8 +20,10 @@ export default function SmoothScrollProvider({
     });
 
     lenisRef.current = lenis;
+    if (typeof window !== 'undefined') {
+      (window as any).lenis = lenis;
+    }
 
-    // RAF loop for smooth scrolling
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -30,10 +31,12 @@ export default function SmoothScrollProvider({
 
     requestAnimationFrame(raf);
 
-    // Clean up
     return () => {
       lenis.destroy();
       lenisRef.current = null;
+      if (typeof window !== 'undefined') {
+        delete (window as any).lenis;
+      }
     };
   }, []);
 

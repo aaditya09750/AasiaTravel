@@ -182,10 +182,10 @@ export const pilgrimAvatars: PilgrimAvatar[] = [
 
 export const aboutData: AboutData = {
   paragraphs: [
-    'At Aasia Travel, we are committed to providing genuine, trustworthy, and reliable Umrah services to every guest. Our mission is to make your sacred journey simple and comfortable. We treat every customer with eternal love, care, mercy, and kindness.',
-    'From the moment you begin planning your Umrah until you safely return home, our experienced team is here to guide and support you every step of the way. We help you perform your Umrah correctly and with ease, ensuring that you can focus on your worship.',
+    'At Aasia Travel, we are committed to providing genuine, trustworthy, and reliable Umrah services to every guest. Our mission is to make your sacred journey simple and comfortable. We treat every customer with eternal love, care, mercy, and kindness. Your comfort, peace of mind, and satisfaction are our highest priorities throughout your journey.',
+    'From the moment you begin planning your Umrah until you safely return home, our experienced team is here to guide and support you every step of the way. We help you perform your Umrah correctly and with ease, ensuring that you can focus on your worship without unnecessary worries. Our dedicated support team is available 24/7 to assist you whenever you need help, bi idhnillah, and seeking the pleasure of Allah through every traveler we have the honor to assist.',
   ],
-  quote: 'May Allah accept your Umrah and make your journey blessed, easy, and full of barakah. Ameen.',
+  quote: 'May Allah accept your Umrah and make your journey blessed, easy, and full of barakah. Ameen. 🕋',
 };
 
 export const footerCompanyLinks: FooterLink[] = [
