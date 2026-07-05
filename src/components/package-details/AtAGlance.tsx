@@ -41,7 +41,7 @@ export default function AtAGlance({
           {items.map((item, idx) => (
             <div
               key={idx}
-              className={`p-8 hover:bg-background-cream/20 transition-colors group ${
+              className={`p-6 md:p-8 hover:bg-background-cream/20 transition-colors group ${
                 idx !== items.length - 1 ? 'border-b md:border-b-0 md:border-r border-primary-soft' : ''
               }`}
             >

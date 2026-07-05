@@ -98,9 +98,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.timeline-line {
-  @apply absolute left-[25px] md:left-[217px] top-0 bottom-0 w-[1px] border-l border-dashed border-primary-muted/40;
-}
 
 /* Lenis Smooth Scroll Configuration */
 html.lenis,

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import Lenis from 'lenis';
 
 export default function SmoothScrollProvider({
@@ -9,6 +10,7 @@ export default function SmoothScrollProvider({
   children: React.ReactNode;
 }) {
   const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -39,6 +41,16 @@ export default function SmoothScrollProvider({
       }
     };
   }, []);
+
+  // Sync scroll height on path change
+  useEffect(() => {
+    if (lenisRef.current) {
+      // Force a slight delay to allow React state/DOM render to complete
+      setTimeout(() => {
+        lenisRef.current?.resize();
+      }, 100);
+    }
+  }, [pathname]);
 
   return <>{children}</>;
 }

@@ -30,7 +30,7 @@ export default function PriceCalculator({
   };
 
   return (
-    <div className="bg-white border border-primary-soft rounded-[4px] p-6 lg:p-9 flex flex-col lg:flex-row gap-8 lg:gap-[60px] font-sans">
+    <div className="bg-white border border-primary-soft rounded-4px p-4 sm:p-6 lg:p-9 flex flex-col lg:flex-row gap-8 lg:gap-[60px] font-sans">
       {/* Filters */}
       <div className="flex-1 space-y-8">
         <div>
@@ -67,11 +67,10 @@ export default function PriceCalculator({
                 <button
                   key={label}
                   onClick={() => setSharing(label)}
-                  className={`px-4 py-2 rounded-full border text-[12px] font-medium transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-primary-light text-white border-primary-light'
-                      : 'bg-background-warm text-primary border-primary-soft hover:border-primary-muted'
-                  }`}
+                  className={`px-4 py-2 rounded-full border text-[12px] font-medium transition-all duration-200 cursor-pointer ${isActive
+                    ? 'bg-primary-light text-white border-primary-light'
+                    : 'bg-background-warm text-primary border-primary-soft hover:border-primary-muted'
+                    }`}
                 >
                   {label} Sharing
                 </button>
@@ -91,11 +90,10 @@ export default function PriceCalculator({
                 <button
                   key={addon}
                   onClick={() => toggleAddon(addon)}
-                  className={`px-4 py-2 rounded-full border text-[12px] font-medium transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-primary-light text-white border-primary-light'
-                      : 'bg-background-warm text-primary border-primary-soft hover:border-primary-muted'
-                  }`}
+                  className={`px-4 py-2 rounded-full border text-[12px] font-medium transition-all duration-200 cursor-pointer ${isActive
+                    ? 'bg-primary-light text-white border-primary-light'
+                    : 'bg-background-warm text-primary border-primary-soft hover:border-primary-muted'
+                    }`}
                 >
                   {addon}
                 </button>
@@ -106,36 +104,36 @@ export default function PriceCalculator({
       </div>
 
       {/* Summary Card */}
-      <div className="lg:w-[458px] bg-background-dark rounded-[4px] p-8 text-white flex flex-col justify-between shadow-lg">
+      <div className="lg:w-[458px] bg-background-dark rounded-4px p-6 sm:p-8 text-white flex flex-col justify-between shadow-lg">
         <div className="space-y-4 mb-8">
-          <div className="flex justify-between items-center text-[14px] font-light">
-            <span className="text-primary-soft/80">Base price / person</span>
+          <div className="flex justify-between items-center text-xs sm:text-[14px] font-light">
+            <span className="text-primary-muted">Base price / person</span>
             <span className="text-background-cream font-semibold">Rs {basePrice.toLocaleString()}</span>
           </div>
-          <div className="flex justify-between items-center text-[14px] font-light">
-            <span className="text-primary-soft/80">Room sharing adjustment</span>
+          <div className="flex justify-between items-center text-xs sm:text-[14px] font-light">
+            <span className="text-primary-muted">Room sharing adjustment</span>
             <span className="text-background-cream font-semibold">+{sharingAdjustment.toLocaleString()}</span>
           </div>
-          <div className="flex justify-between items-center text-[14px] font-light">
-            <span className="text-primary-soft/80">Add-ons</span>
+          <div className="flex justify-between items-center text-xs sm:text-[14px] font-light">
+            <span className="text-primary-muted">Add-ons</span>
             <span className="text-background-cream font-semibold">Rs {addonsTotal.toLocaleString()} / person</span>
           </div>
-          <div className="flex justify-between items-center text-[14px] font-light">
-            <span className="text-primary-soft/80">Travellers</span>
+          <div className="flex justify-between items-center text-xs sm:text-[14px] font-light">
+            <span className="text-primary-muted">Travellers</span>
             <span className="text-background-cream font-semibold">{travellers}</span>
           </div>
         </div>
 
         <div className="pt-6 border-t border-white/10">
-          <div className="flex justify-between items-end mb-6">
-            <span className="text-[14px] font-medium tracking-wide text-primary-soft uppercase">
+          <div className="flex justify-between items-end mb-6 gap-4">
+            <span className="text-xs sm:text-[14px] font-medium tracking-wide text-primary-muted uppercase pb-1">
               Estimated Total
             </span>
-            <span className="font-serif text-[30px] font-bold text-background-cream leading-none">
+            <span className="font-serif text-xl sm:text-[30px] font-bold text-background-cream leading-none">
               Rs {grandTotal.toLocaleString()}
             </span>
           </div>
-          <Button variant="dark" fullWidth className="bg-primary hover:bg-primary-light">
+          <Button variant="dark" fullWidth className="bg-primary-accent hover:bg-primary-light text-[11px] min-[360px]:text-xs min-[400px]:text-sm sm:text-base">
             BOOK ON WHATSAPP
           </Button>
         </div>

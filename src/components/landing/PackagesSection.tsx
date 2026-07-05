@@ -110,14 +110,14 @@ export default function PackagesSection() {
                 <div className="flex gap-2 sm:gap-3">
                   <button
                     onClick={() => scroll(section.type, 'left')}
-                    className="p-1.5 sm:p-2 border border-primary/20 rounded-full hover:bg-primary/5 text-primary cursor-pointer transition-all active:scale-95 duration-200"
+                    className="p-1.5 sm:p-2 border border-primary/20 rounded-full hover:bg-primary/5 text-primary cursor-pointer transition-all active:scale-95 duration-200 lg:hover:bg-primary lg:hover:text-white lg:hover:border-primary"
                     aria-label="Scroll left"
                   >
                     <ArrowLeft size={18} className="sm:w-5 sm:h-5" />
                   </button>
                   <button
                     onClick={() => scroll(section.type, 'right')}
-                    className="p-1.5 sm:p-2 border border-primary/20 rounded-full hover:bg-primary/5 text-primary cursor-pointer transition-all active:scale-95 duration-200"
+                    className="p-1.5 sm:p-2 border border-primary/20 rounded-full hover:bg-primary/5 text-primary cursor-pointer transition-all active:scale-95 duration-200 lg:hover:bg-primary lg:hover:text-white lg:hover:border-primary"
                     aria-label="Scroll right"
                   >
                     <ArrowRight size={18} className="sm:w-5 sm:h-5" />

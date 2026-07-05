@@ -56,11 +56,11 @@ export default async function PackageDetailPage({ params }: PageProps) {
 
       {/* Confirmed Flight Details */}
       <section className="container-custom section-padding font-sans">
-        <div className="mb-12">
-          <span className="text-[16px] font-semibold tracking-widest text-primary uppercase block mb-4">
+        <div className="mb-8 md:mb-12">
+          <span className="text-[12px] sm:text-[14px] font-normal tracking-widest text-primary uppercase block mb-3 sm:mb-4">
             CONFIRMED FLIGHT DETAILS
           </span>
-          <h2 className="text-4xl font-serif text-primary font-bold">
+          <h2 className="text-3xl sm:text-4xl font-serif text-primary font-semibold">
             Your round trip, already booked.
           </h2>
         </div>
@@ -76,11 +76,11 @@ export default async function PackageDetailPage({ params }: PageProps) {
 
       {/* Where You'll Stay */}
       <section className="container-custom section-padding border-t border-primary-soft/30 font-sans">
-        <div className="mb-12">
-          <span className="text-[16px] font-semibold tracking-widest text-primary uppercase block mb-4">
-            WHERE YOU'LL STAY
+        <div className="mb-8 md:mb-12">
+          <span className="text-[12px] sm:text-[14px] font-medium tracking-widest text-primary uppercase block mb-3 sm:mb-4">
+            WHERE YOU&apos;LL STAY
           </span>
-          <h2 className="text-4xl font-serif text-primary font-bold">
+          <h2 className="text-3xl sm:text-4xl font-serif text-primary font-semibold">
             Makkah & Madina accommodation
           </h2>
         </div>
@@ -93,11 +93,11 @@ export default async function PackageDetailPage({ params }: PageProps) {
 
       {/* Price Calculator */}
       <section className="container-custom section-padding border-t border-primary-soft/30 font-sans">
-        <div className="mb-12">
-          <span className="text-[16px] font-semibold tracking-widest text-primary uppercase block mb-4">
+        <div className="mb-8 md:mb-12">
+          <span className="text-[12px] sm:text-[14px] font-medium tracking-widest text-primary uppercase block mb-3 sm:mb-4">
             PLAN YOUR COST
           </span>
-          <h2 className="text-4xl font-serif text-primary font-bold">Price calculator.</h2>
+          <h2 className="text-3xl sm:text-4xl font-serif text-primary font-semibold">Price calculator.</h2>
         </div>
         <PriceCalculator
           basePrice={pkg.basePrice}

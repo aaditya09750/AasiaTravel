@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 import type { HotelInfo } from '@/types';
 
@@ -11,8 +10,8 @@ export default function HotelCard({
   image,
 }: HotelInfo) {
   return (
-    <div className="bg-white border border-primary-soft rounded-[4px] overflow-hidden flex flex-col h-full font-sans">
-      <div className="h-[282px] relative overflow-hidden">
+    <div className="bg-white border border-primary-soft rounded-4px overflow-hidden flex flex-col h-full font-sans">
+      <div className="h-[200px] sm:h-[282px] relative overflow-hidden">
         <Image
           src={image}
           alt={name}
@@ -22,7 +21,7 @@ export default function HotelCard({
         />
       </div>
 
-      <div className="p-6 lg:p-[27px] flex flex-col flex-grow">
+      <div className="p-4 sm:p-6 lg:p-[27px] flex flex-col grow">
         <span className="text-[10px] font-semibold tracking-wider text-primary-light uppercase mb-2">
           {type}
         </span>
@@ -31,7 +30,7 @@ export default function HotelCard({
           {'★'.repeat(rating)} · {distance}
         </p>
 
-        <ul className="space-y-2 mb-8 flex-grow">
+        <ul className="space-y-2 mb-8 grow">
           {features.map((feature, idx) => (
             <li key={idx} className="flex items-start gap-2 text-sm font-normal text-primary">
               <span className="text-primary-muted">—</span>

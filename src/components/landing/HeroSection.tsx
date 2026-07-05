@@ -16,7 +16,6 @@ export default function HeroSection() {
       const now = new Date();
 
       try {
-        // Time in Makkah (UTC+3 / Asia/Riyadh)
         const timeFormatter = new Intl.DateTimeFormat('en-US', {
           timeZone: 'Asia/Riyadh',
           hour: 'numeric',
@@ -25,11 +24,9 @@ export default function HeroSection() {
           hour12: true,
         });
 
-        // Formats as "1:20:35 PM" -> convert to lowercase "1:20:35 pm"
         const timeStr = timeFormatter.format(now).toLowerCase();
         setMakkahTime(timeStr);
 
-        // Hijri Date in Makkah
         const hijriFormatter = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {
           timeZone: 'Asia/Riyadh',
           day: 'numeric',
@@ -39,7 +36,6 @@ export default function HeroSection() {
 
         const hijriStr = hijriFormatter.format(now);
 
-        // Parse and format into "20th Muharram, 1448 AH" style
         const dayMatch = hijriStr.match(/\b\d{1,2}\b/);
         const yearMatch = hijriStr.match(/\b\d{4}\b/);
 
@@ -71,7 +67,6 @@ export default function HeroSection() {
           setMakkahDate(hijriStr.includes('AH') ? hijriStr : `${hijriStr} AH`);
         }
       } catch (e) {
-        // Fallback to static time if formatting fails
         setMakkahTime('1:20:35 pm');
         setMakkahDate('13th Muharram, 1448 AH');
       }
@@ -84,7 +79,6 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative min-h-screen overflow-hidden bg-white">
-      {/* ── Mobile/Tablet Background Image (below lg) ── */}
       <div className="absolute inset-0 lg:hidden z-0">
         <Image
           src="/images/hero-2.png"
@@ -141,7 +135,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-primary-muted text-sm sm:text-base max-w-md mb-6 md:mb-8 leading-relaxed font-sans">
-            Thoughtfully Guided Pilgrimages For Those Who Seek More Than Just A Trip — A Transformation.
+            Thoughtfully Guided Pilgrimages For Those Who Seek More Than Just A Trip A Transformation.
           </p>
 
           <Link href="/#packages">
@@ -170,8 +164,8 @@ export default function HeroSection() {
                 +
               </div>
             </div>
-            <p className="text-xs sm:text-sm text-primary font-sans font-semibold tracking-wide">
-              Trusted By <span className="text-primary-light font-bold">1329</span> Happy Pilgrims
+            <p className="text-xs text-primary font-sans font-medium tracking-wide">
+              Trusted By <span className="text-primary-light font-bold">1500+</span> Happy Pilgrims
             </p>
           </div>
         </motion.div>
