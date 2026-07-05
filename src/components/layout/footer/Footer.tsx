@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Facebook, Instagram, Youtube } from 'lucide-react';
@@ -9,6 +8,7 @@ import {
   footerSocialLinks,
   footerContactInfo,
 } from '@/data/home';
+import { getWhatsAppChatSupportLink, getWhatsAppGetInTouchLink } from '@/lib/whatsapp';
 
 export default function Footer() {
   const fontStyle = { fontFamily: 'var(--font-inter), sans-serif' };
@@ -78,13 +78,22 @@ export default function Footer() {
               SUPPORT
             </h4>
             <ul className="space-y-3">
-              {footerSupportLinks.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} className="text-sm text-primary-muted hover:text-primary transition-colors font-normal hover-underline pb-0.5">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {footerSupportLinks.map((link) => {
+                const isChatSupport = link.label === 'Chat Support';
+                const href = isChatSupport ? getWhatsAppChatSupportLink() : link.href;
+                return (
+                  <li key={link.label}>
+                    <a
+                      href={href}
+                      target={isChatSupport ? '_blank' : undefined}
+                      rel={isChatSupport ? 'noopener noreferrer' : undefined}
+                      className="text-sm text-primary-muted hover:text-primary transition-colors font-normal hover-underline pb-0.5"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -99,10 +108,33 @@ export default function Footer() {
             <ul className="space-y-4">
               {footerContactInfo.map((item, idx) => {
                 const Icon = { Mail, Phone, MapPin }[item.iconName];
+                const isPhone = item.iconName === 'Phone';
+                const isMail = item.iconName === 'Mail';
+
+                let content = <span>{item.text}</span>;
+                if (isPhone) {
+                  content = (
+                    <a
+                      href={getWhatsAppGetInTouchLink()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-primary transition-colors cursor-pointer"
+                    >
+                      {item.text}
+                    </a>
+                  );
+                } else if (isMail) {
+                  content = (
+                    <a href={`mailto:${item.text}`} className="hover:text-primary transition-colors">
+                      {item.text}
+                    </a>
+                  );
+                }
+
                 return (
                   <li key={idx} className="flex items-center gap-3 text-sm text-primary-muted font-normal">
                     <Icon size={16} className="text-primary-light shrink-0" />
-                    <span>{item.text}</span>
+                    {content}
                   </li>
                 );
               })}

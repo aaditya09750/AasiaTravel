@@ -2,17 +2,20 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui';
+import { getWhatsAppCalculatorBookingLink } from '@/lib/whatsapp';
 
 interface PriceCalculatorProps {
   basePrice: number;
   sharingPrices: Record<string, number>;
   addonPrices: Record<string, number>;
+  packageTitle: string;
 }
 
 export default function PriceCalculator({
   basePrice,
   sharingPrices,
   addonPrices,
+  packageTitle,
 }: PriceCalculatorProps) {
   const [travellers, setTravellers] = useState(1);
   const [sharing, setSharing] = useState('Quad');
@@ -22,6 +25,18 @@ export default function PriceCalculator({
   const addonsTotal = addons.reduce((sum, addon) => sum + (addonPrices[addon] || 0), 0);
   const totalPerPerson = basePrice + sharingAdjustment + addonsTotal;
   const grandTotal = totalPerPerson * travellers;
+
+  const handleBookOnWhatsApp = () => {
+    const addonsList = addons.length > 0 ? addons.join(', ') : 'None';
+    const whatsappLink = getWhatsAppCalculatorBookingLink({
+      packageTitle,
+      travellers,
+      sharing,
+      addonsList,
+      grandTotal,
+    });
+    window.open(whatsappLink, '_blank');
+  };
 
   const toggleAddon = (addon: string) => {
     setAddons((prev) =>
@@ -133,7 +148,12 @@ export default function PriceCalculator({
               Rs {grandTotal.toLocaleString()}
             </span>
           </div>
-          <Button variant="dark" fullWidth className="bg-primary-accent hover:bg-primary-light text-[11px] min-[360px]:text-xs min-[400px]:text-sm sm:text-base">
+          <Button
+            variant="dark"
+            fullWidth
+            onClick={handleBookOnWhatsApp}
+            className="bg-primary-accent hover:bg-primary-light text-[11px] min-[360px]:text-xs min-[400px]:text-sm sm:text-base"
+          >
             BOOK ON WHATSAPP
           </Button>
         </div>

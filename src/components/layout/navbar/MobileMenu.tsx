@@ -6,6 +6,7 @@ import { navLinks } from '@/config/site';
 import { Button } from '@/components/ui';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLockScroll, useSmoothScrollTo } from '@/hooks';
+import { getWhatsAppGetInTouchLink } from '@/lib/whatsapp';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -13,15 +14,13 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
-  // Use custom lock scroll and smooth scroll hooks
   useLockScroll(isOpen);
   const handleScrollToSection = useSmoothScrollTo();
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[90] lg:hidden">
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-90 lg:hidden">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -63,8 +62,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </span>
               <Button
                 variant="primary"
-                className="bg-secondary hover:bg-secondary/90 text-white text-xs tracking-widest px-8 py-3.5 rounded-[4px] transition-colors"
-                onClick={onClose}
+                className="bg-secondary hover:bg-secondary/90 text-white text-xs tracking-widest px-8 py-3.5 rounded-4px transition-colors"
+                onClick={() => {
+                  onClose();
+                  window.open(getWhatsAppGetInTouchLink(), '_blank');
+                }}
               >
                 GET IN TOUCH
               </Button>

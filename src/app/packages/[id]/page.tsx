@@ -45,6 +45,9 @@ export default async function PackageDetailPage({ params }: PageProps) {
         duration={pkg.duration}
         description={pkg.description}
         basePrice={pkg.price}
+        departureCity={pkg.departureCity}
+        date={pkg.date}
+        category={pkg.category}
       />
 
       {/* At a Glance */}
@@ -104,6 +107,7 @@ export default async function PackageDetailPage({ params }: PageProps) {
           basePrice={pkg.price}
           sharingPrices={pkg.sharingPrices}
           addonPrices={pkg.addonPrices}
+          packageTitle={pkg.title}
         />
       </ScrollReveal>
     </div>

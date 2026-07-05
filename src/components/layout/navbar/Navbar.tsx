@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { navLinks, siteConfig } from '@/config/site';
 import { Button } from '@/components/ui';
 import { cn } from '@/lib/utils';
+import { getWhatsAppGetInTouchLink } from '@/lib/whatsapp';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import MobileMenu from './MobileMenu';
@@ -89,6 +90,7 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <Button
               variant="primary"
+              onClick={() => window.open(getWhatsAppGetInTouchLink(), '_blank')}
               className="bg-secondary text-white text-xs font-semibold tracking-widest px-6 py-3 rounded-4px hover:bg-secondary/90 transition-colors shadow-sm"
             >
               GET IN TOUCH

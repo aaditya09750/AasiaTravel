@@ -1,6 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 import { Button, ScrollReveal } from '@/components/ui';
+import { getWhatsAppPackageBookingLink } from '@/lib/whatsapp';
 
 interface PackageHeroProps {
   title: string;
@@ -8,6 +11,9 @@ interface PackageHeroProps {
   duration: string;
   description: string;
   basePrice: number;
+  departureCity: string;
+  date: string;
+  category: string;
 }
 
 export default function PackageHero({
@@ -16,7 +22,22 @@ export default function PackageHero({
   duration,
   description,
   basePrice,
+  departureCity,
+  date,
+  category,
 }: PackageHeroProps) {
+  const handleBookJourney = () => {
+    const whatsappLink = getWhatsAppPackageBookingLink({
+      title,
+      category,
+      duration,
+      departureCity,
+      date,
+      basePrice,
+    });
+    window.open(whatsappLink, '_blank');
+  };
+
   return (
     <div className="font-sans pt-20 md:pt-24">
       {/* Breadcrumb */}
@@ -52,7 +73,7 @@ export default function PackageHero({
         </ScrollReveal>
 
         {/* Budget Card */}
-        <ScrollReveal direction="up" delay={0.1} className="bg-background-dark rounded-[4px] p-6 sm:p-8 text-center space-y-6 shadow-xl w-full">
+        <ScrollReveal direction="up" delay={0.1} className="bg-background-dark rounded-4px p-6 sm:p-8 text-center space-y-6 shadow-xl w-full">
           <div className="space-y-2">
             <span className="text-[11.2px] sm:text-xs font-semibold tracking-[0.2em] text-primary-light/99 uppercase block">
               CURRENT JOURNEY BUDGET
@@ -65,7 +86,12 @@ export default function PackageHero({
               Visa, flights & accommodation included
             </p>
           </div>
-          <Button variant="secondary" fullWidth className="text-primary text-xs sm:text-[13px] font-bold tracking-[0.2em] py-4">
+          <Button
+            variant="secondary"
+            fullWidth
+            onClick={handleBookJourney}
+            className="text-primary text-xs sm:text-[13px] font-bold tracking-[0.2em] py-4"
+          >
             BOOK JOURNEY
           </Button>
         </ScrollReveal>

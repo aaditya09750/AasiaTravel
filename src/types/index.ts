@@ -10,3 +10,9 @@ export type {
   FooterSocialLink,
   FooterContactItem,
 } from './common';
+
+export type {
+  PackageBookingDetails,
+  CalculatorBookingDetails,
+  HotelDirectionsDetails,
+} from './whatsapp';

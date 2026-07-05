@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import type { HotelInfo } from '@/types';
+import { getWhatsAppHotelDirectionsLink } from '@/lib/whatsapp';
 
 export default function HotelCard({
   type,
@@ -40,7 +41,9 @@ export default function HotelCard({
         </ul>
 
         <a
-          href="#"
+          href={getWhatsAppHotelDirectionsLink({ name, type, distance })}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-[12px] font-medium tracking-wide text-primary uppercase border-b border-primary-soft w-fit pb-1 hover:text-primary-light transition-colors"
         >
           Get Directions →
