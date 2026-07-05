@@ -10,6 +10,7 @@ export interface Testimonial {
   quote: string;
   rating: number;
   avatar: string;
+  coverImage?: string;
 }
 
 export interface Feature {
