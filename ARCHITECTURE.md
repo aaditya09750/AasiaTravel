@@ -116,5 +116,5 @@ classDiagram
 
 ## Key System Boundaries & Evolutions
 
-1. **Zero Database Overhead**: There is no live DB connection. Package listings are defined statically in [packages.ts](file:///c:/SharedData/Projects/Aasia%20Travel/aasiatravel_module1/src/data/packages.ts). To scale, a DB layer (e.g. Postgres + Drizzle ORM) can be added cleanly.
+1. **Zero Database Overhead**: There is no live DB connection. Package listings are defined statically in [packages.ts](file:///c:/SharedData/Projects/Aasia Travel/aasiatravel_module1/src/data/packages.ts). To scale, a DB layer (e.g. Postgres + Drizzle ORM) can be added cleanly.
 2. **Serverless Static-Site Output**: Dynamic package pages are precompiled at build time (`generateStaticParams`) ensuring rapid CDN loads.

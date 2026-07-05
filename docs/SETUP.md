@@ -22,7 +22,7 @@ This guide details the step-by-step procedures required to customize, build, and
 The destination contact phone number is managed within the global configuration profile.
 
 To update the recipient number:
-1. Open the configuration file [site.ts](file:///c:/SharedData/Projects/Aasia%20Travel/aasiatravel_module1/src/config/site.ts).
+1. Open the configuration file [site.ts](file:///c:/SharedData/Projects/Aasia Travel/aasiatravel_module1/src/config/site.ts).
 2. Locate the `contact` configuration block:
    ```typescript
    export const siteConfig = {
