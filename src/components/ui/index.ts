@@ -4,3 +4,4 @@ export { default as Skeleton } from './Skeleton';
 export { default as TestimonialCard } from './TestimonialCard';
 export { default as ScrollReveal } from './ScrollReveal';
 export { default as ImageSlideshow } from './ImageSlideshow';
+export { default as TimeWidget } from './TimeWidget';
