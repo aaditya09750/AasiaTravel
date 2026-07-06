@@ -78,7 +78,7 @@ export default function HeroSection() {
         } else {
           setMakkahDate(hijriStr.includes('AH') ? hijriStr : `${hijriStr} AH`);
         }
-      } catch (e) {
+      } catch {
         setMakkahTime(heroTimeWidgetConfig.fallbackTime);
         setMakkahDate(heroTimeWidgetConfig.fallbackDate);
       }
