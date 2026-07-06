@@ -1,17 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-
-interface ImageSlideshowProps {
-  images: string[];
-  alt: string;
-  className?: string;
-  imageClassName?: string;
-  interval?: number;
-}
+import { useImageSlideshow } from '@/hooks';
+import type { ImageSlideshowProps } from '@/types';
 
 export default function ImageSlideshow({
   images,
@@ -20,17 +13,7 @@ export default function ImageSlideshow({
   imageClassName,
   interval = 4000,
 }: ImageSlideshowProps) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    if (images.length <= 1) return;
-
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [images.length, interval]);
+  const { currentImageIndex, setCurrentImageIndex } = useImageSlideshow(images.length, interval);
 
   if (!images || images.length === 0) return null;
 
