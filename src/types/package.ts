@@ -46,7 +46,6 @@ export interface Package {
   image: string;
   limitedSeats: boolean;
 
-  // Unified Details Page Properties
   subtitle: string;
   description: string;
   seatsLeft: number;

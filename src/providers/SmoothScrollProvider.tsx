@@ -40,10 +40,8 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     };
   }, []);
 
-  // Sync scroll height on path change
   useEffect(() => {
     if (lenisRef.current) {
-      // Force a slight delay to allow React state/DOM render to complete
       setTimeout(() => {
         lenisRef.current?.resize();
       }, 100);

@@ -15,7 +15,6 @@ import { useScrollState, useScrollSpy, useSmoothScrollTo } from '@/hooks';
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Use custom reusable hooks
   const isScrolled = useScrollState(50);
   const activeSection = useScrollSpy(['home', 'about', 'packages', 'reviews']);
   const handleScrollToSection = useSmoothScrollTo();
