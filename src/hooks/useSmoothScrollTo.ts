@@ -7,7 +7,10 @@ export function useSmoothScrollTo() {
     if (href === '/') {
       if (typeof window !== 'undefined' && window.location.pathname === '/') {
         e.preventDefault();
-        const lenis = (window as any).lenis as Lenis | undefined;
+        const lenis =
+          typeof window !== 'undefined'
+            ? (window as unknown as { lenis?: Lenis }).lenis
+            : undefined;
         const executeScroll = () => {
           if (lenis && typeof lenis.scrollTo === 'function') {
             lenis.scrollTo(0, { offset: 0 });
@@ -31,7 +34,9 @@ export function useSmoothScrollTo() {
       if (element) {
         e.preventDefault();
         const lenis =
-          typeof window !== 'undefined' ? ((window as any).lenis as Lenis | undefined) : undefined;
+          typeof window !== 'undefined'
+            ? (window as unknown as { lenis?: Lenis }).lenis
+            : undefined;
         const executeScroll = () => {
           if (lenis && typeof lenis.scrollTo === 'function') {
             lenis.scrollTo(element, { offset: -70 });
