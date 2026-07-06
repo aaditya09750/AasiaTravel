@@ -93,7 +93,7 @@ export default function HeroSection() {
     <section id="home" className="relative min-h-screen overflow-hidden bg-white">
       <div className="absolute inset-0 lg:hidden z-0">
         <Image
-          src="/images/hero-2.png"
+          src="/images/hero-2.jpg"
           alt="Pilgrims at Kaaba"
           fill
           priority
@@ -105,7 +105,7 @@ export default function HeroSection() {
 
       <div className="hidden lg:block absolute inset-0 z-0 select-none">
         <Image
-          src="/images/hero.png"
+          src="/images/hero.jpg"
           alt="Pilgrims at Kaaba Desktop"
           fill
           priority
