@@ -15,7 +15,7 @@ export default function ScrollReveal({
   children,
   delay = 0,
   direction = 'up',
-  duration = 0.7,
+  duration = 1.3,
   className,
 }: ScrollRevealProps) {
   const directions = {
